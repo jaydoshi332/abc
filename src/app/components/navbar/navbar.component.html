@@ -1,0 +1,12 @@
+<mat-toolbar color="primary">
+  <a routerLink="/" mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon">
+    <mat-icon>menu_book</mat-icon>
+  </a>
+  <a routerLink="/"><span>Exam Portal</span></a>
+  <span class="example-spacer"></span>
+  <a *ngIf="!isActive" mat-icon-button routerLink="/login">Login</a>
+  <a *ngIf="!isActive" class="mr10 ml10" mat-icon-button routerLink="/signup">Register</a>
+  <a *ngIf="isActive && user" class="mr20 ml20" routerLink="/admin/profile"  mat-icon-button>{{user.firstName.toUpperCase()}}</a>
+  <a (click)="logout()" *ngIf="isActive" class="mr10 ml10"  mat-icon-button>Logout</a>
+</mat-toolbar>
+

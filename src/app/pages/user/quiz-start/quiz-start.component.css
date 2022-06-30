@@ -1,0 +1,18 @@
+.option{
+  font-family: "Bookman Old Style";
+  font-size: large;
+}
+.ques{
+  font-family: "Bookman Old Style";
+  font-size: large;
+}
+.answer{
+  font-family: "Bookman Old Style";
+  font-size: large;
+}
+.example-radio-button {
+  margin: 5px;
+}
+.result{
+ color: red;
+}

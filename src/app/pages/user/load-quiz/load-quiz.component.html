@@ -1,0 +1,27 @@
+<h1>All Available Quizzes</h1>
+<!--{{quizzes.length}}-->
+<mat-card *ngIf="quizzes?.length < 1" class="mr20 ml10">
+  <mat-card-content>
+    <h1>No Quiz in this Category</h1>
+  </mat-card-content>
+</mat-card>
+
+<mat-list *ngFor="let quiz of quizzes">
+
+  <mat-card *ngIf="quiz.active==true" class="mr20 ml20 mt10" [ngClass]="quiz.active?'active-color':'nonactive-color'">
+    <mat-card-header>
+      <div mat-card-avatar class="example-header-image"></div>
+      <mat-card-title>{{quiz.title}}</mat-card-title>
+      <mat-card-subtitle>{{quiz.category.title}}</mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-content>
+      <p>{{quiz.description}}</p>
+    </mat-card-content>
+    <mat-card-actions class="text-center">
+      <button mat-raised-button color="primary">View</button>
+      <button [routerLink]="'/user-dashboard/instructions/'+quiz.quizId" mat-raised-button color="accent">Start</button>
+      <button mat-stroked-button color="primary">Total Questions {{quiz.numberOfQuestions}}</button>
+      <button mat-stroked-button color="primary">Total Questions {{quiz.maxMarks}}</button>
+    </mat-card-actions>
+  </mat-card>
+</mat-list>

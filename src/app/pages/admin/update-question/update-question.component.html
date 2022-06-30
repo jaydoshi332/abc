@@ -1,0 +1,78 @@
+<mat-card>
+  <h1 class="text-center">Updating Question of {{quizTitle}}</h1>
+  <div class="row">
+    <div class="container">
+      <div class="col-md-8 offset-md-2">
+        <mat-card-content>
+          <form #addQuestionForm="ngForm" (ngSubmit)="formSubmit(addQuestionForm)">
+            <!--            content field-->
+            <span *ngIf="content.invalid && content.touched" style="color: red;">Invalid Content</span>
+            <!--            <mat-form-field appearance="outline" class="full-width">-->
+            <!--              <mat-label>Content</mat-label>-->
+            <!--              <textarea required minlength="4" rows="8" [(ngModel)]="question.content" name="content" #content="ngModel"-->
+            <!--                        matInput placeholder="Enter Content"></textarea>-->
+            <!--            </mat-form-field>-->
+            <ckeditor [editor]="Editor" required name="content" [(ngModel)]="question.content" rows="8" #content="ngModel"></ckeditor>
+            <div class="row">
+              <div class="col-md-6">
+                <!--                option 1-->
+                <span *ngIf="option1.invalid && option1.touched" style="color: red;">Invalid Option</span>
+                <mat-form-field appearance="outline" class="full-width">
+                  <mat-label>Option1</mat-label>
+                  <input required name="option1" #option1="ngModel" [(ngModel)]="question.option1" matInput
+                         placeholder="Enter Option1">
+                </mat-form-field>
+
+              </div>
+              <div class="col-md-6">
+                <!--                option 2-->
+                <span *ngIf="option2.invalid && option2.touched" style="color: red;">Invalid Option</span>
+                <mat-form-field appearance="outline" class="full-width">
+                  <mat-label>Option2</mat-label>
+                  <input required name="option2" #option2="ngModel" [(ngModel)]="question.option2" matInput
+                         placeholder="Enter Option2">
+                </mat-form-field>
+              </div>
+              <div class="col-md-6">
+                <!--                option 3 -->
+                <span *ngIf="option3.invalid && option3.touched" style="color: red;">Invalid Option</span>
+                <mat-form-field appearance="outline" class="full-width">
+                  <mat-label>Option3</mat-label>
+                  <input required name="option3" #option3="ngModel" [(ngModel)]="question.option3" matInput
+                         placeholder="Enter Option3">
+                </mat-form-field>
+              </div>
+              <div class="col-md-6">
+                <!--                option 4-->
+                <span *ngIf="option4.invalid && option4.touched" style="color: red;">Invalid Option</span>
+                <mat-form-field appearance="outline" class="full-width">
+                  <mat-label>Option4</mat-label>
+                  <input required name="option4" #option4="ngModel" [(ngModel)]="question.option4" matInput
+                         placeholder="Enter Option4">
+                </mat-form-field>
+              </div>
+            </div>
+            <!--              answer -->
+            <mat-form-field class="mt20 full-width" appearance="fill">
+              <mat-label>Select Answer</mat-label>
+              <mat-select [(ngModel)]="question.answer" required name="answer">
+                <mat-option *ngIf="question.option1" [value]="question.option1">{{question.option1}}</mat-option>
+                <mat-option *ngIf="question.option2" [value]="question.option2">{{question.option2}}</mat-option>
+                <mat-option *ngIf="question.option3" [value]="question.option3">{{question.option3}}</mat-option>
+                <mat-option *ngIf="question.option4" [value]="question.option4">{{question.option4}}</mat-option>
+              </mat-select>
+            </mat-form-field>
+
+            <!--              button-->
+            <div class="container text-center">
+              <button type="submit" [disabled]="addQuestionForm.invalid" mat-raised-button color="primary">Update</button>
+              <button type="reset" class="ml10" mat-raised-button color="accent">Reset</button>
+            </div>
+
+          </form>
+        </mat-card-content>
+      </div>
+    </div>
+  </div>
+</mat-card>
+<!--{{question | json}}-->

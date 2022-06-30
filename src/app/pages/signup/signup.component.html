@@ -1,0 +1,78 @@
+<div class="bootstrap-wrapper">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6 offset-md-3">
+        <mat-card>
+          <div class="container text-center">
+            <img class="logo" src="../../../assets/logo.png" alt="">
+          </div>
+          <h1 class="text-center">Register Here !!</h1>
+
+<!--          {{user | json}}-->
+          <form #loginForm="ngForm" (ngSubmit)="formSubmit(loginForm)">
+            <!--            &lt;!&ndash;                Username Field&ndash;&gt;-->
+            <span *ngIf="name.invalid && name.touched" style="color: red;">Invalid Username</span>
+            <mat-form-field appearance="outline" class="full-width">
+              <mat-label>User Name</mat-label>
+              <input required [(ngModel)]="user.username" minlength="2" pattern="[a-zA-Z0-9#$@^]+$" name="username"
+                     #name="ngModel" matInput placeholder="Enter Username">
+              <mat-hint>Username must be unique</mat-hint>
+            </mat-form-field>
+
+
+            <!--              Password Field-->
+            <span *ngIf="password.invalid && password.touched" style="color: red;">Invalid Password</span>
+            <mat-form-field appearance="outline" class="full-width">
+              <mat-label>Password</mat-label>
+              <input required [(ngModel)]="user.password" pattern="[a-zA-Z0-9$@^&*!#^]+$" minlength="4" name="password"
+                     #password="ngModel" type="password" matInput placeholder="Enter Password">
+              <mat-hint>Atleast 4 character required</mat-hint>
+            </mat-form-field>
+
+            <!--              firstName-->
+            <span *ngIf="firstName.invalid && firstName.touched" style="color: red;">Invalid First Name</span>
+            <mat-form-field appearance="outline" class="full-width">
+              <mat-label>First Name</mat-label>
+              <input required [(ngModel)]="user.firstName" minlength="2" pattern="[a-zA-Z]+$" name="firstName"
+                     #firstName="ngModel" matInput placeholder="Enter First Name">
+            </mat-form-field>
+
+            <!--              lastname-->
+            <span *ngIf="lastName.invalid && lastName.touched" style="color: red;">Invalid Last Name</span>
+            <mat-form-field appearance="outline" class="full-width">
+              <mat-label>Last Name</mat-label>
+              <input required [(ngModel)]="user.lastName" minlength="2" pattern="[a-zA-Z]+$" name="lastName"
+                     #lastName="ngModel" matInput placeholder="Enter Last Name">
+            </mat-form-field>
+
+
+            <span *ngIf="email.invalid && email.touched" style="color: red;">Invlaid Email</span>
+            <mat-form-field appearance="outline" class="full-width">
+              <mat-label>Email</mat-label>
+              <input required [(ngModel)]="user.email" name="email" pattern="[a-z0-9.]+@[a-z]+\.[a-z]{2,3}"
+                     #email="ngModel" type="email" matInput placeholder="Enter Email">
+            </mat-form-field>
+
+            <!--              phone Number-->
+            <span *ngIf="phone.invalid && phone.touched" style="color: red;">Invalid Phone Number</span>
+            <mat-form-field appearance="outline" class="full-width">
+              <mat-label>Phone Number</mat-label>
+              <input required [(ngModel)]="user.phone" pattern="^[789]\d{9}$" name="phone" #phone="ngModel" type="tel"
+                     matInput placeholder="Enter Phone Number">
+            </mat-form-field>
+
+            <div class="container text-center">
+              <button type="submit" [disabled]="loginForm.invalid" mat-raised-button color="primary">Register</button>
+              <button type="reset" style="margin-left:20px;" mat-raised-button color="accent">Clear</button>
+            </div>
+
+          </form>
+        </mat-card>
+      </div>
+
+    </div>
+
+  </div>
+
+
+</div>
